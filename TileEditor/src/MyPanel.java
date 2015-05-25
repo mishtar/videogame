@@ -15,7 +15,7 @@ public class MyPanel extends JPanel implements Runnable, KeyListener, MouseListe
 	public static int TILESIZE = 30;
 	public static final int numRows = 2;
 	
-	private String path = "C:/Users/USER/workspace/TileEditor/bin/tilesets/firetilesset.gif";
+	private String path = "C:/Users/USER/workspace/TileEditor/bin/tilesets/firetilesset.giff";
 	private BufferedImage tileset;
 	private BufferedImage[][] tiles;
 	private int numTiles;
