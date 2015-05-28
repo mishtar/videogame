@@ -17,6 +17,7 @@ public class Content {
 	public static BufferedImage[][] GelPop = load("/Sprites/Enemies/GelPop.gif", 25, 25);
 	public static BufferedImage[][] DarkEnergy = load("/Sprites/Enemies/DarkEnergy.gif", 20, 20);
 	public static BufferedImage[][] Moneda = load("/Sprites/Other/moneda.png", 51, 51);
+	public static BufferedImage[][] Moneda2 = load("/Sprites/Other/moneda2.png", 51, 51);
 	
 	public static BufferedImage[][] load(String s, int w, int h) {
 		BufferedImage[][] ret;

@@ -5,8 +5,12 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.Point;
 
+import principal.GamePanel;
+import javafx.scene.transform.Scale;
+
 public class Mouse implements MouseListener, MouseMotionListener {
 
+	private static int Tolerancia=-15;
 	private static final int BUTTON_COUNT = 3;
 
 	// Polled position of the mouse cursor
@@ -149,7 +153,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
 	public synchronized void mouseMoved(MouseEvent e) {
 
-		currentPos = e.getPoint();
+		currentPos = new Point((e.getX()/GamePanel.SCALE)-Tolerancia,(e.getY()/GamePanel.SCALE)-Tolerancia);
 
 	}
 

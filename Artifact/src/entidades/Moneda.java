@@ -20,6 +20,8 @@ public class Moneda  extends MapObject {
 	private int startX;
 	private int startY;
 	
+	private boolean bPresionado;
+	
 	private Point Position;
 	
 	private int type = 0;
@@ -45,16 +47,29 @@ public class Moneda  extends MapObject {
 		animation.setDelay(4);
 		startX=iStartX;
 		startY=iStartY;
+		bPresionado=false;
 	}
 	
 	public void update() {
 		 //obtenerEstadoActual=	Mouse.obtenerEstado(1);
 		 obtenerEstadoActual=	Mouse.obtenerEstado(0);
 		 //obtenerEstadoActual=	Mouse.obtenerEstado(2);
-		 if(obtenerEstadoActual==MouseState.PRESSED){
+		 if(obtenerEstadoActual==MouseState.ONCE){
 			 Position=Mouse.getPosition();
-			 if(Position.x>=startX &&Position.x<=startX+width && Position.y>=startY &&Position.y<=startY+height)
+			 if(Position.x>=startX &&Position.x<=startX+width && Position.y>=startY &&Position.y<=startY+height){
 				 System.out.println(startX + startY);
+				 if (!bPresionado){
+				 startSprites = Content.Moneda2[0];
+					animation.setFrames(startSprites);
+					animation.setDelay(4);
+					bPresionado=true;
+				 }else{
+					 startSprites = Content.Moneda[0];
+						animation.setFrames(startSprites);
+						animation.setDelay(4);
+						bPresionado=false;
+				 }
+			 }
 		 }
 	}
 	

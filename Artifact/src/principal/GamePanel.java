@@ -56,9 +56,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			thread = new Thread(this);
 			addKeyListener(this);
 			//actualizacion del mouse
-			mouse = new Mouse();
-			addMouseListener(mouse);
-			addMouseMotionListener(mouse);
+			
 			thread.start();
 		}
 	}
@@ -85,7 +83,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		long start;
 		long elapsed;
 		long wait;
-		
+		mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 		// game loop
 		while(running) {
 			
