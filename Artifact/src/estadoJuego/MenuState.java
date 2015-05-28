@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import principal.GamePanel;
+import tileMap.Background;
 import manejadores.Keys;
 import audio.JukeBox;
 import entidades.PlayerSave;
@@ -15,6 +16,7 @@ import entidades.PlayerSave;
 public class MenuState extends GameState {
 	
 	private BufferedImage head;
+	private Background Menu;
 	
 	private int currentChoice = 0;
 	private String[] options = {
@@ -33,7 +35,7 @@ public class MenuState extends GameState {
 		super(gsm);
 		
 		try {
-			
+			Menu = new Background("/Backgrounds/inicio.jpg", 0);
 			// load floating head
 			head = ImageIO.read(
 				getClass().getResourceAsStream("/HUD/Hud.gif")
@@ -72,6 +74,7 @@ public class MenuState extends GameState {
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		
 		// draw title
+		Menu.draw(g);
 		g.setColor(titleColor);
 		g.setFont(titleFont);
 		g.drawString("A R T I F A C T", 70, 90);
@@ -96,7 +99,7 @@ public class MenuState extends GameState {
 		if(currentChoice == 0) {
 			JukeBox.play("menuselect");
 			PlayerSave.init();
-			gsm.setState(GameStateManager.LEVEL1ASTATE);
+			gsm.setState(GameStateManager.NIVEL1);
 		}
 		else if(currentChoice == 1) {
 			System.exit(0);
