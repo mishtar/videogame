@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import manejadores.Keys;
+import manejadores.Mouse;
 import estadoJuego.GameStateManager;
 
 
@@ -39,6 +40,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private int recordingCount = 0;
 	private boolean screenshot;
 	
+	//Eventos del mouse
+	Mouse mouse;
+	
 	public GamePanel() {
 		super();
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -51,6 +55,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		if(thread == null) {
 			thread = new Thread(this);
 			addKeyListener(this);
+			//actualizacion del mouse
+			mouse = new Mouse();
+			addMouseListener(mouse);
+			addMouseMotionListener(mouse);
 			thread.start();
 		}
 	}
@@ -106,6 +114,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private void update() {
 		gsm.update();
 		Keys.update();
+		//se agrega actualizacion del mouse
+		mouse.poll();
 	}
 	private void draw() {
 		gsm.draw(g);
