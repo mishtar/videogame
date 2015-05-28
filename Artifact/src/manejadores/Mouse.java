@@ -11,11 +11,11 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
 	// Polled position of the mouse cursor
 
-	private Point mousePos = null;
+	private static Point mousePos = null;
 
 	// Current position of the mouse cursor
 
-	private Point currentPos = null;
+	private static Point currentPos = null;
 
 	// Current state of mouse buttons
 
@@ -23,9 +23,9 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
 	// Polled mouse buttons
 
-	private MouseState[] poll = null;
+	private static MouseState[] poll = null;
 
-	private enum MouseState {
+	public enum MouseState {
 
 		RELEASED, // Not down
 
@@ -91,9 +91,15 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
 	}
 
-	public Point getPosition() {
+	public static Point getPosition() {
 
 		return mousePos;
+
+	}
+	
+	public static MouseState obtenerEstado(int button) {
+
+		return poll[button];
 
 	}
 
